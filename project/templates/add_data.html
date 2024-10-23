@@ -1,0 +1,11 @@
+{% extends 'default.html' %}
+{% block main %}
+    <div class="new-data-content">
+        <h2 class="data-title">Добавить данные...</h2>
+        <a href="{% url 'add_language' %}" class="nav-link">Добавить язык программирования</a>
+        <a href="{% url 'add_technology' %}" class="nav-link">Добавить технологию</a>
+        <a href="{% url 'add_feature' %}" class="nav-link">Добавить особенность</a>
+        <a href="{% url 'add_project' %}" class="nav-link">Добавить проект</a>
+    </div>
+
+{% endblock main %}

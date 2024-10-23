@@ -1,0 +1,39 @@
+$primary-color: #f5a505;
+$secondary-color: chocolate;
+$data-color: #3657ff;
+$border-color: #00727a;
+$primary-background-color: rgba(0,0,0,0.8);
+$secondary-background-color: teal;
+$footer-font-size: 24px;
+$footer-font-weight: 700;
+$input-font-size: 18px;
+$label-font-size: 24px;
+$btn-color: aqua;
+$btn-font-size: 20px;
+$btn-font-weight: 200;
+$btn-active-font-weight: 800;
+
+@font-face {
+  font-family: 'Primary';
+  src: url("/static/fonts/Karmen.ttf");
+}
+
+@font-face {
+  font-family: 'Secondary';
+  src: url("/static/fonts/Czizh.ttf");
+}
+
+@font-face {
+  font-family: 'Main';
+  src: url("/static/fonts/Tolkien.ttf");
+}
+
+@font-face {
+  font-family: "Manuscript";
+  src: url("/static/fonts/GoodVibesPro.ttf");
+}
+
+@font-face {
+  font-family: "Data";
+  src: url("/static/fonts/Cony.ttf");
+}

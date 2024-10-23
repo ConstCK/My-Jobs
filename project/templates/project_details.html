@@ -1,0 +1,50 @@
+{% extends 'default.html' %}
+
+{% block main %}
+<article class="project-details">
+    <h1 class="main-title">Название проекта: <u>{{ project.name }}</u></h1>
+    <h3 class="project-item">Описание: <u>{{project.description}}</u></h3>
+    <h3 class="project-item">Дата создания: <u>{{project.created_at}}</u></h3>
+    <h3 class="project-item">Тип проекта: <u>{{project.type }}</u></h3>
+    <h3 class="project-item">Ссылка на диске: <u>{{project.pc_url }}</u></h3>
+    {% if project.git_url %}
+    <a class="project-item" href="{{project.git_url}}" target="_blank">Ссылка на GitHub: <u>{{project.git_url }}</u></a>
+    {% else %}
+    <h3 class="project-item">Ссылка на GitHub: - </h3>
+    {% endif %}
+    <h3 class="project-item">Используемые технологии:</h3>
+        <div class="project-languages">
+            {% if project.languages.all %}
+            {% for language in project.languages.all %}
+            <div class="project-language">{{language}}</div>
+            {% endfor %}
+            {% else %}
+            <div class="project-language">-</div>
+            {% endif %}
+        </div>
+    <h3 class="project-item">Используемые технологии:</h3>
+        <div class="project-technologies">
+            {% if project.languages.all %}
+            {% for technology in project.technologies.all %}
+            <div class="project-technology">{{technology}}</div>
+            {% endfor %}
+            {% else %}
+            <div class="project-technology">-</div>
+            {% endif %}
+        </div>
+    <h3 class="project-item">Особенности проекта:</h3>
+        <div class="project-features">
+            {% if project.features.all %}
+            {% for feature in project.features.all %}
+            <div class="project-feature">{{feature}}</div>
+            {% endfor %}
+            {% else %}
+            <div class="project-feature">-</div>
+            {% endif %}
+        </div>
+    <div class="project-modify">
+        <a class="nav-link" href="{% url 'project_update' project.id %}">Change</a>
+        <a class="nav-link" href="{% url 'project_delete' project.id %}">Delete</a>
+    </div>
+</article>
+{% endblock main %}

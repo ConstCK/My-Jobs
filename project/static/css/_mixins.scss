@@ -1,0 +1,50 @@
+ @mixin btn {
+        font-size: 18px;
+        font-weight: $btn-font-weight;
+        color: $btn-color;
+        background-color: $secondary-background-color;
+        box-shadow: 3px 6px black;
+        border-radius: 8px;
+        border: 1px solid black;
+        padding: 10px 20px;
+        margin: 20px;
+        transition: all 0.3s ease-out;
+        cursor: pointer;
+     }
+
+ @mixin btn-hover {
+        transform: scale(1.05);
+        box-shadow: 4px 8px black;
+        color: white;
+        font-weight: $btn-active-font-weight;
+     }
+
+ @mixin btn-active {
+        color: black;
+        box-shadow: 2px 4px black;
+        border-radius: 10px;
+     }
+
+ @mixin categories {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        align-items: center;
+        width: 95%;
+        border: 0.3px solid $border-color;
+        color: white;
+     }
+
+ @mixin flex-r {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+     }
+
+  @mixin flex-c {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+     }

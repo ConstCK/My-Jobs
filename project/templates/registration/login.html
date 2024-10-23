@@ -1,0 +1,17 @@
+{% extends 'default.html' %}
+{% block main %}
+    <div class="auth-page">
+        <h2 class="auth-title">Вход в аккаунт</h2>
+        <form class="auth-form" method="post">
+            {% csrf_token %}
+            {% if form.errors %}
+                <div class="form-errors">{{ form.non_field_errors }}</div>
+            {% endif %}
+            <div class="form-label">{{ form.username.label }}</div>
+            <div class="form-input">{{ form.username }}</div>
+            <div class="form-label">{{ form.password.label }}</div>
+            <div class="form-input">{{ form.password }}</div>
+            <button class="form-btn" type="submit">LogIn</button>
+        </form>
+    </div>
+{% endblock main %}

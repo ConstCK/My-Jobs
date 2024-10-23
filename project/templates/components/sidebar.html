@@ -1,0 +1,30 @@
+{% load custom_tags %}
+<aside class="side-bar">
+    <div class="side-bar-content">
+        <a href="{% url 'home' %}" class="nav-link all-categories {% get_active_class 'home' %}">Все проекты</a>
+        <div class="language bar">
+            <h2 class="title">Языки:</h2>
+            <div class="categories">
+                {% for language in languages %}
+                <a class="nav-link {% get_active_class 'projects_by_language' language.name %}" href="{% url 'projects_by_language' language.name %}">{{language}}</a>
+                {% endfor %}
+            </div>
+        </div>
+        <div class="technology bar">
+            <h2 class="title">Технологии:</h2>
+            <div class="categories">
+                {% for technology in technologies %}
+                <a class="nav-link {% get_active_class 'projects_by_technology' technology.name %}" href="{% url 'projects_by_technology' technology.name %}">{{technology}}</a>
+                {% endfor %}
+            </div>
+        </div>
+        <div class="feature bar">
+            <h2 class="title">Особенности:</h2>
+            <div class="categories">
+                {% for feature in features %}
+                <a class="nav-link {% get_active_class 'projects_by_feature' feature.name %}" href="{% url 'projects_by_feature' feature.name %}">{{feature}}</a>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</aside>

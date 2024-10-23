@@ -1,0 +1,10 @@
+<h1 class="header-title">{{ title }}</h1>
+<nav class="navigation">
+    {% include "components/navbar.html" %}
+    {% if title == "Главная страница" %}
+        {% include "components/authbar.html" %}
+    {%endif%}
+</nav>
+
+
+

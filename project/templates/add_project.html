@@ -1,0 +1,13 @@
+{% extends 'default.html' %}
+{% block main %}
+    <div class="new-data-content">
+        <h2 class="data-title">Добавление проекта</h2>
+        <form class="project-form" method="post">
+            {% csrf_token %}
+            {% if form.errors %}
+                <div class="form-errors">{{ form.non_field_errors }}</div>
+            {% endif %}
+            <button class="project-btn" type="submit">Добавить</button>
+        </form>
+    </div>
+{% endblock main %}

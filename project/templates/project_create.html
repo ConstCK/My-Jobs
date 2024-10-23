@@ -1,0 +1,34 @@
+{% extends 'default.html' %}
+
+{% block main %}
+    <div class="object-create">
+        <form action="" method="post">
+        {% csrf_token %}
+        {% if form.errors %}
+            <div class="form-errors">{{ form.non_field_errors }}</div>
+        {% endif %}
+        <div class="form-errors">{{ form.name.errors }}</div>
+        <div class="form-label">{{ form.name.label }}</div>
+        <div class="form-input">{{ form.name }}</div>
+        <div class="form-label">{{ form.description.label }}</div>
+        <div class="form-input">{{ form.description }}</div>
+        <div class="form-label">{{ form.created_at.label }}</div>
+        <div class="form-input">{{ form.created_at }}</div>
+        <div class="form-label">{{ form.type.label }}</div>
+        <div class="form-input">{{ form.type }}</div>
+        <div class="form-errors">{{ form.git_url.errors }}</div>
+        <div class="form-label">{{ form.git_url.label }}</div>
+        <div class="form-input">{{ form.git_url }}</div>
+        <div class="form-errors">{{ form.pc_url.errors }}</div>
+        <div class="form-label">{{ form.pc_url.label }}</div>
+        <div class="form-input">{{ form.pc_url }}</div>
+        <div class="form-label">{{ form.languages.label }}</div>
+        <div class="form-input">{{ form.languages }}</div>
+        <div class="form-label">{{ form.technologies.label }}</div>
+        <div class="form-input">{{ form.technologies }}</div>
+        <div class="form-label">{{ form.features.label }}</div>
+        <div class="form-input">{{ form.features }}</div>
+        <button class="form-btn" type="submit">Create</button>
+        </form>
+    </div>
+{% endblock main %}

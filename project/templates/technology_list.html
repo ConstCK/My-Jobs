@@ -1,0 +1,11 @@
+{% extends 'default.html' %}
+{% block main %}
+<div class="technology-list">
+    <h1 class="technology-title">Выберите технологию для удаления</h1>
+        <div class="technologies">
+            {% for technology in technologies %}
+            <a class="nav-link" href="{% url 'delete_technology' technology.id %}">{{ technology }}</a>
+            {% endfor %}
+        </div>
+</div>
+{% endblock main %}

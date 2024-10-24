@@ -1,5 +1,6 @@
 from django.contrib.auth.models import User
 from django.db import models
+from django.urls import reverse
 
 from .constants import Type
 
@@ -58,6 +59,9 @@ class Project(models.Model):
 
     def __str__(self):
         return f'Проект {self.name} создан {self.author}'
+
+    def get_absolute_url(self):
+        return reverse('project_detail', kwargs={'pk': self.pk})
 
     class Meta:
         verbose_name = 'Проект'

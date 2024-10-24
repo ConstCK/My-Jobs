@@ -1,3 +1,4 @@
+from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import render
@@ -88,7 +89,7 @@ class ProjectsByFeature(CategoriesMixin, ProjectsDataMixin, ListView):
 
 
 # Представление для добавления языка программирования
-class AddLanguage(LoginRequiredMixin, CreateView):
+class LanguageAdd(LoginRequiredMixin, CreateView):
     model = Language
     template_name = 'language_create.html'
     context_object_name = 'object'
@@ -98,7 +99,7 @@ class AddLanguage(LoginRequiredMixin, CreateView):
 
 
 # Представление для добавления технологии
-class AddTechnology(CreateView):
+class TechnologyAdd(CreateView):
     model = Technology
     template_name = 'technology_create.html'
     context_object_name = 'object'
@@ -108,7 +109,7 @@ class AddTechnology(CreateView):
 
 
 # Представление для добавления особенности
-class AddFeature(CreateView):
+class FeatureAdd(CreateView):
     model = Feature
     template_name = 'feature_create.html'
     context_object_name = 'object'
@@ -118,7 +119,7 @@ class AddFeature(CreateView):
 
 
 # Представление для добавления проекта
-class AddProject(CreateView):
+class ProjectAdd(CreateView):
     form_class = ProjectForm
     template_name = 'project_create.html'
     context_object_name = 'project'
@@ -156,6 +157,54 @@ class ProjectUpdate(LoginRequiredMixin, UpdateView):
     success_url = reverse_lazy('successful_update')
 
 
+# Представление для выбора языка программирования для удаления
+class LanguageSelect(LoginRequiredMixin, ListView):
+    model = Language
+    context_object_name = 'languages'
+    template_name = 'language_list.html'
+    extra_context = {'title': 'Выбор языка программирования для удаления'}
+
+
+# Представление для выбора технологии для удаления
+class TechnologySelect(LoginRequiredMixin, ListView):
+    model = Technology
+    context_object_name = 'technologies'
+    template_name = 'technology_list.html'
+    extra_context = {'title': 'Выбор технологии для удаления'}
+
+
+# Представление для выбора особенности для удаления
+class FeatureSelect(LoginRequiredMixin, ListView):
+    model = Feature
+    context_object_name = 'features'
+    template_name = 'feature_list.html'
+    extra_context = {'title': 'Выбор особенности для удаления'}
+
+
+# Представление для удаления технологии
+class LanguageDelete(LoginRequiredMixin, DeleteView):
+    model = Language
+    template_name = 'language_delete.html'
+    extra_context = {'title': 'Удаление языка программирования'}
+    success_url = reverse_lazy('successful_delete')
+
+
+# Представление для удаления технологии
+class TechnologyDelete(LoginRequiredMixin, DeleteView):
+    model = Technology
+    template_name = 'technology_delete.html'
+    extra_context = {'title': 'Удаление технологии'}
+    success_url = reverse_lazy('successful_delete')
+
+
+# Представление для удаления особенности
+class FeatureDelete(LoginRequiredMixin, DeleteView):
+    model = Feature
+    template_name = 'feature_delete.html'
+    extra_context = {'title': 'Удаление особенности'}
+    success_url = reverse_lazy('successful_delete')
+
+
 # Представление для удаления проекта
 class ProjectDelete(LoginRequiredMixin, DeleteView):
     model = Project
@@ -163,12 +212,17 @@ class ProjectDelete(LoginRequiredMixin, DeleteView):
     extra_context = {'title': 'Удаление проекта'}
     success_url = reverse_lazy('successful_delete')
 
+    # Способ передачи данных в функцию-обработчик успешного удаления объекта
+    def get_success_url(self, *args, **kwargs):
+        obj = Project.objects.get(pk=self.get_object().id)
+        return reverse_lazy('successful_delete', kwargs={'obj': f'Проект {obj.name}'})
+
 
 # Представления для вывода страницы с меню добавления различных объектов (Проект,
 # Язык программирования, Технология, Особенность)
 @login_required
-def add_data(request):
-    return render(request, template_name='add_data.html')
+def data_page(request):
+    return render(request, template_name='data_page.html')
 
 
 # Представления для вывода страницы "О проекте"
@@ -187,5 +241,6 @@ def successful_update(request):
 
 
 # Представления для вывода страницы "Успешное удаление объекта"
-def successful_delete(request):
-    return render(request, template_name='successful_delete.html', context={'title': 'Удачное удаление проекта'})
+def successful_delete(request, obj):
+    return render(request, template_name='successful_delete.html',
+                  context={'title': 'Удачное удаление объекта', 'object': obj})

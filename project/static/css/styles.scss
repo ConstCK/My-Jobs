@@ -225,7 +225,7 @@ body {
                 }
             }
 
-        .new-data-content {
+        .data-content {
             @include flex-c;
             width: 100%;
 
@@ -235,6 +235,26 @@ body {
 
             .nav-link {
                 width: 80%;
+                }
+            .language-data, .technology-data, .feature-data {
+                @include flex-r;
+                width: 100%;
+
+                .nav-link {
+                    width: 40%;
+                    }
+
+                }
+            }
+        .language-list, .technology-list, .feature-list {
+            width: 100%;
+            }
+        .languages, .technologies, .features {
+            @include flex-c;
+            height: 100%;
+
+            .nav-link {
+                width: 60%;
                 }
             }
 

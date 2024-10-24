@@ -1,25 +1,32 @@
 from django.urls import path
 
 from .views import (ProjectsByLanguage, ProjectsByTechnology, ProjectsByFeature,
-                    AllProjects, ProjectDetail, AddLanguage, AddTechnology, AddFeature,
-                    AddProject, add_data, about, ProjectDelete, ProjectUpdate, successful_update, successful_delete,
-                    successful_create)
+                    AllProjects, ProjectDetail, data_page, about, ProjectDelete,
+                    ProjectUpdate, successful_update, successful_delete, successful_create,
+                    FeatureDelete, TechnologyDelete, LanguageDelete, ProjectAdd, FeatureAdd,
+                    TechnologyAdd, LanguageAdd, LanguageSelect, TechnologySelect, FeatureSelect)
 
 urlpatterns = [
     path('', AllProjects.as_view(), name='home'),
     path('by-language/<str:name>', ProjectsByLanguage.as_view(), name='projects_by_language'),
     path('by-technology/<str:name>', ProjectsByTechnology.as_view(), name='projects_by_technology'),
     path('by-feature/<str:name>', ProjectsByFeature.as_view(), name='projects_by_feature'),
-    path('add', add_data, name='add_data'),
-    path('add/language', AddLanguage.as_view(), name='add_language'),
-    path('add/technology', AddTechnology.as_view(), name='add_technology'),
-    path('add/feature', AddFeature.as_view(), name='add_feature'),
-    path('add/project', AddProject.as_view(), name='add_project'),
-    path('details/<int:pk>', ProjectDetail.as_view(), name='project_detail'),
-    path('details/<int:pk>/update', ProjectUpdate.as_view(), name='project_update'),
-    path('details/<int:pk>/delete', ProjectDelete.as_view(), name='project_delete'),
-    path('successful-update', successful_update, name='successful_update'),
-    path('successful-delete', successful_delete, name='successful_delete'),
-    path('successful-create', successful_create, name='successful_create'),
+    path('add/language', LanguageAdd.as_view(), name='add_language'),
+    path('add/technology', TechnologyAdd.as_view(), name='add_technology'),
+    path('add/feature', FeatureAdd.as_view(), name='add_feature'),
+    path('add/project', ProjectAdd.as_view(), name='add_project'),
+    path('select/language', LanguageSelect.as_view(), name='select_language'),
+    path('select/technology', TechnologySelect.as_view(), name='select_technology'),
+    path('select/feature', FeatureSelect.as_view(), name='select_feature'),
+    path('delete/language/<int:pk>', LanguageDelete.as_view(), name='delete_language'),
+    path('delete/technology/<int:pk>', TechnologyDelete.as_view(), name='delete_technology'),
+    path('delete/feature/<int:pk>', FeatureDelete.as_view(), name='delete_feature'),
+    path('<int:pk>', ProjectDetail.as_view(), name='project_detail'),
+    path('<int:pk>/update', ProjectUpdate.as_view(), name='project_update'),
+    path('<int:pk>/delete', ProjectDelete.as_view(), name='project_delete'),
+    path('data-page', data_page, name='data_page'),
     path('about', about, name='about'),
+    path('successful-update', successful_update, name='successful_update'),
+    path('successful-delete/<str:obj>', successful_delete, name='successful_delete'),
+    path('successful-create', successful_create, name='successful_create')
 ]

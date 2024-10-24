@@ -233,16 +233,34 @@ body {
       padding: 5px 10px;
       font-family: 'Main', Courier, monospace;
       font-size: 18px; }
-  .main .new-data-content {
+  .main .data-content {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     width: 100%; }
-    .main .new-data-content .data-title {
+    .main .data-content .data-title {
       margin: 7px; }
-    .main .new-data-content .nav-link {
+    .main .data-content .nav-link {
       width: 80%; }
+    .main .data-content .language-data, .main .data-content .technology-data, .main .data-content .feature-data {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+      width: 100%; }
+      .main .data-content .language-data .nav-link, .main .data-content .technology-data .nav-link, .main .data-content .feature-data .nav-link {
+        width: 40%; }
+  .main .language-list, .main .technology-list, .main .feature-list {
+    width: 100%; }
+  .main .languages, .main .technologies, .main .features {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%; }
+    .main .languages .nav-link, .main .technologies .nav-link, .main .features .nav-link {
+      width: 60%; }
   .main .side-bar {
     width: 25vw;
     min-height: 100%;

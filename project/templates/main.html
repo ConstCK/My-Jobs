@@ -22,7 +22,7 @@
                         <div class="project-dependency">{{feature}}</div>
                         {% endfor %}
                     </div>
-                    <a class="nav-link project-item" href="{% url 'project_detail' project.id %}">Details...</a>
+                    <a class="nav-link project-item" href="{{ project.get_absolute_url }}">Details...</a>
                 </section>
                 {% endfor %}
                 {% else %}

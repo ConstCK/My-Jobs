@@ -1,0 +1,11 @@
+{% extends 'default.html' %}
+{% block main %}
+<div class="language-list">
+    <h1 class="language-title">Выберите язык программирования для удаления</h1>
+        <div class="languages">
+            {% for language in languages %}
+            <a class="nav-link" href="{% url 'delete_language' language.id %}">{{ language }}</a>
+            {% endfor %}
+        </div>
+</div>
+{% endblock main %}

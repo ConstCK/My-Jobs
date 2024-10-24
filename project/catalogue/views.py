@@ -188,6 +188,12 @@ class LanguageDelete(LoginRequiredMixin, DeleteView):
     extra_context = {'title': 'Удаление языка программирования'}
     success_url = reverse_lazy('successful_delete')
 
+    # Способ передачи данных в функцию-обработчик успешного удаления объекта
+    def get_success_url(self, *args, **kwargs):
+        obj = Language.objects.get(pk=self.get_object().id)
+        return reverse_lazy('successful_delete',
+                            kwargs={'obj': f'Язык программирования {obj.name}'})
+
 
 # Представление для удаления технологии
 class TechnologyDelete(LoginRequiredMixin, DeleteView):
@@ -196,6 +202,12 @@ class TechnologyDelete(LoginRequiredMixin, DeleteView):
     extra_context = {'title': 'Удаление технологии'}
     success_url = reverse_lazy('successful_delete')
 
+    # Способ передачи данных в функцию-обработчик успешного удаления объекта
+    def get_success_url(self, *args, **kwargs):
+        obj = Technology.objects.get(pk=self.get_object().id)
+        return reverse_lazy('successful_delete',
+                            kwargs={'obj': f'Технология {obj.name}'})
+
 
 # Представление для удаления особенности
 class FeatureDelete(LoginRequiredMixin, DeleteView):
@@ -203,6 +215,18 @@ class FeatureDelete(LoginRequiredMixin, DeleteView):
     template_name = 'feature_delete.html'
     extra_context = {'title': 'Удаление особенности'}
     success_url = reverse_lazy('successful_delete')
+
+    # Способ передачи данных в функцию-обработчик успешного удаления объекта
+    def get_success_url(self, *args, **kwargs):
+        obj = Feature.objects.get(pk=self.get_object().id)
+        return reverse_lazy('successful_delete',
+                            kwargs={'obj': f'Особенность {obj.name}'})
+
+    # Альтернативный способ передачи данных в функцию-обработчик успешного удаления объекта
+    # def get_success_url(self, *args, **kwargs):
+    #     obj = Feature.objects.get(pk=self.get_object().id)
+    #     data = f"Особенность {obj}"
+    #     return reverse_lazy('successful_delete') + '?' + 'obj=' + data
 
 
 # Представление для удаления проекта
@@ -215,7 +239,8 @@ class ProjectDelete(LoginRequiredMixin, DeleteView):
     # Способ передачи данных в функцию-обработчик успешного удаления объекта
     def get_success_url(self, *args, **kwargs):
         obj = Project.objects.get(pk=self.get_object().id)
-        return reverse_lazy('successful_delete', kwargs={'obj': f'Проект {obj.name}'})
+        return reverse_lazy('successful_delete',
+                            kwargs={'obj': f'Проект {obj.name}'})
 
 
 # Представления для вывода страницы с меню добавления различных объектов (Проект,
@@ -242,5 +267,8 @@ def successful_update(request):
 
 # Представления для вывода страницы "Успешное удаление объекта"
 def successful_delete(request, obj):
+    print(request.get_full_path())
+    print(request.path)
+    print(obj)
     return render(request, template_name='successful_delete.html',
                   context={'title': 'Удачное удаление объекта', 'object': obj})

@@ -6,3 +6,4 @@ class Type(models.TextChoices):
     PET = 'Pet проект'
     TEMPLATE = 'Шаблон проекта'
     SCHOOL = 'Учебный проект'
+    COMMERCIAL = 'Коммерческий проект'

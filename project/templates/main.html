@@ -4,7 +4,10 @@
 {% include "components/sidebar.html" %}
 <div class="main-content">
     <h1 class="main-title">Список проектов</h1>
-    <h2 class="selected_category">Выбранная категория: <u> {{ category }} </u></h2>
+    <h2 class="selected-category">Выбранная категория: <u> {{ category }} </u></h2>
+    {% if description%}
+        <h3 class="selected-category">Описание: <u> {{ description }} </u></h3>
+    {% endif %}
             <div class="projects">
                 {% if not user.is_authenticated %}
                 <h2 class="message">Авторизуйтесь для получения данных</h2>

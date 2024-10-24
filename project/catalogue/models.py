@@ -14,6 +14,7 @@ class Language(models.Model):
     class Meta:
         verbose_name = 'Язык программирования'
         verbose_name_plural = 'Языки программирования'
+        ordering = ['name']
 
 
 class Technology(models.Model):
@@ -27,6 +28,7 @@ class Technology(models.Model):
     class Meta:
         verbose_name = 'Технология'
         verbose_name_plural = 'Технологии'
+        ordering = ['name']
 
 
 class Feature(models.Model):
@@ -40,6 +42,7 @@ class Feature(models.Model):
     class Meta:
         verbose_name = 'Особенность'
         verbose_name_plural = 'Особенности'
+        ordering = ['name']
 
 
 class Project(models.Model):
@@ -66,3 +69,4 @@ class Project(models.Model):
     class Meta:
         verbose_name = 'Проект'
         verbose_name_plural = 'Проекты'
+        ordering=['name']

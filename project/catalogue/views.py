@@ -31,7 +31,6 @@ class AllProjects(CategoriesMixin, ProjectsDataMixin, ListView):
 
 # Представление для получения проектов с указанным языком программирования
 class ProjectsByLanguage(CategoriesMixin, ProjectsDataMixin, ListView):
-
     def get_context_data(self, *, object_list=None, **kwargs):
         category = f'Язык программирования -> {self.kwargs.get('name')}'
         context = super().get_context_data(**kwargs)
@@ -51,13 +50,14 @@ class ProjectsByLanguage(CategoriesMixin, ProjectsDataMixin, ListView):
 
 # Представление для получения проектов с указанной использованной технологией
 class ProjectsByTechnology(CategoriesMixin, ProjectsDataMixin, ListView):
-
     def get_context_data(self, *, object_list=None, **kwargs):
         category = f'Использование {self.kwargs.get('name')}'
         context = super().get_context_data(**kwargs)
         initial_context = self.get_user_context(title='Главная страница',
                                                 category=category)
+
         context.update(initial_context)
+        context['description'] = initial_context.get('technologies').filter(name=self.kwargs.get('name'))[0].description
         return context
 
     def get_queryset(self):
@@ -77,6 +77,7 @@ class ProjectsByFeature(CategoriesMixin, ProjectsDataMixin, ListView):
         initial_context = self.get_user_context(title='Главная страница',
                                                 category=category)
         context.update(initial_context)
+        context['description'] = initial_context.get('features').filter(name=self.kwargs.get('name'))[0].description
         return context
 
     def get_queryset(self):

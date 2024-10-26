@@ -18,6 +18,15 @@
   font-family: "Data";
   src: url("/static/fonts/Cony.ttf"); }
 
+* h1, * h2, * h3 {
+  margin: 0; }
+
+* a, * :link, * :visited {
+  text-decoration: none; }
+
+* li {
+  list-style: None; }
+
 body {
   max-width: 90%;
   display: flex;
@@ -31,12 +40,6 @@ body {
   body button {
     text-decoration: none;
     font-family: 'Secondary', Courier, monospace; }
-  body h1, body h2, body h3 {
-    margin: 0; }
-  body a, body :link, body :visited {
-    text-decoration: none; }
-  body li {
-    list-style: None; }
   body .nav-link, body .form-btn {
     font-size: 18px;
     font-weight: 200;
@@ -181,7 +184,7 @@ body {
       margin: 7px;
       font-family: 'Data', Courier, monospace;
       font-size: 20px;
-      color: #f5a505; }
+      color: #3657ff; }
     .main .project-details .project-languages, .main .project-details .project-technologies, .main .project-details .project-features {
       display: flex;
       flex-direction: row;

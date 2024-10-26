@@ -1,5 +1,6 @@
 @import 'variables';
 @import 'mixins';
+@import 'reset';
 
 
 body {
@@ -16,17 +17,6 @@ body {
         button {
             text-decoration: none;
             font-family: 'Secondary', Courier, monospace;
-            }
-
-        h1, h2, h3, {
-            margin: 0;
-            }
-
-        a, :link, :visited {
-            text-decoration: none;
-            }
-        li {
-            list-style: None;
             }
 
         .nav-link, .form-btn {
@@ -167,7 +157,7 @@ body {
                     margin: 7px;
                     font-family: 'Data', Courier, monospace;
                     font-size: 20px;
-                    color: $primary-color;
+                    color: $data-color;
                 }
 
             .project-languages, .project-technologies, .project-features {

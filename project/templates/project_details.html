@@ -1,4 +1,5 @@
 {% extends 'default.html' %}
+{% load static %}
 
 {% block main %}
 <article class="project-details">
@@ -6,7 +7,8 @@
     <h2 class="project-item">Описание: <u>{{project.description}}</u></h2>
     <h2 class="project-item">Дата создания: <u>{{project.created_at}}</u></h2>
     <h2 class="project-item">Тип проекта: <u>{{project.type }}</u></h2>
-    <h2 class="project-item">Ссылка на диске: <u>{{project.pc_url }}</u></h2>
+    <h2 class="project-item" id="pc-url">Ссылка на диске: <u>{{project.pc_url }}</u></h2>
+    <button class="nav-link" id="copy-button">Copy project url</button>
     {% if project.git_url %}
     <a class="project-item" href="{{project.git_url}}" target="_blank">Ссылка на GitHub: <u>{{project.git_url }}</u></a>
     {% else %}
@@ -46,5 +48,6 @@
         <a class="nav-link" href="{% url 'project_update' project.id %}">Change</a>
         <a class="nav-link" href="{% url 'project_delete' project.id %}">Delete</a>
     </div>
+    <script src="{% static 'js/main.js' %}"></script>
 </article>
 {% endblock main %}

@@ -197,6 +197,8 @@ body {
       padding: 10px; }
       .main .project-details .project-languages .project-language, .main .project-details .project-languages .project-technology, .main .project-details .project-languages .project-feature, .main .project-details .project-technologies .project-language, .main .project-details .project-technologies .project-technology, .main .project-details .project-technologies .project-feature, .main .project-details .project-features .project-language, .main .project-details .project-features .project-technology, .main .project-details .project-features .project-feature {
         margin: 5px 8px; }
+    .main .project-details .nav-link {
+      width: 40%; }
     .main .project-details .project-modify {
       display: flex;
       flex-direction: row;
@@ -204,8 +206,6 @@ body {
       align-items: center;
       width: 80%;
       margin: 15px auto; }
-      .main .project-details .project-modify .nav-link {
-        width: 40%; }
   .main .project-delete {
     display: flex;
     flex-direction: column;

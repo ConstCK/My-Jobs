@@ -169,16 +169,17 @@ body {
                     }
                 }
 
+            .nav-link {
+                width: 40%;
+                }
+
             .project-modify {
                 @include flex-r;
                 width: 80%;
                 margin: 15px auto;
-
-                .nav-link {
-                    width: 40%;
-                    }
                 }
             }
+
         .project-delete {
             @include flex-c;
             }

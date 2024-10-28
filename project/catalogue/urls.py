@@ -1,10 +1,11 @@
 from django.urls import path
 
 from .views import (ProjectsByLanguage, ProjectsByTechnology, ProjectsByFeature,
-                    AllProjects, ProjectDetail, data_page, about, ProjectDelete,
-                    ProjectUpdate, successful_update, successful_delete, successful_create,
+                    AllProjects, ProjectDetail, DataView, ProjectDelete,
+                    ProjectUpdate, SuccessfulUpdateView, SuccessfulDeleteView, SuccessfulCreateView,
                     FeatureDelete, TechnologyDelete, LanguageDelete, ProjectAdd, FeatureAdd,
-                    TechnologyAdd, LanguageAdd, LanguageSelect, TechnologySelect, FeatureSelect)
+                    TechnologyAdd, LanguageAdd, LanguageSelect, TechnologySelect, FeatureSelect,
+                    AboutView)
 
 urlpatterns = [
     path('', AllProjects.as_view(), name='home'),
@@ -24,9 +25,9 @@ urlpatterns = [
     path('<int:pk>', ProjectDetail.as_view(), name='project_detail'),
     path('<int:pk>/update', ProjectUpdate.as_view(), name='project_update'),
     path('<int:pk>/delete', ProjectDelete.as_view(), name='project_delete'),
-    path('data-page', data_page, name='data_page'),
-    path('about', about, name='about'),
-    path('successful-update', successful_update, name='successful_update'),
-    path('successful-delete/<str:obj>', successful_delete, name='successful_delete'),
-    path('successful-create', successful_create, name='successful_create')
+    path('data-page', DataView.as_view(), name='data_page'),
+    path('about', AboutView.as_view(), name='about'),
+    path('successful-update', SuccessfulUpdateView.as_view(), name='successful_update'),
+    path('successful-delete/<str:obj>',SuccessfulDeleteView.as_view() , name='successful_delete'),
+    path('successful-create', SuccessfulCreateView.as_view(), name='successful_create')
 ]

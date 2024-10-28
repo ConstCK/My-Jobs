@@ -2,7 +2,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import render
 from django.urls import reverse_lazy
-from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
+from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView, TemplateView
 
 from .forms import ProjectForm
 from .models import Project, Language, Technology, Feature
@@ -245,30 +245,40 @@ class ProjectDelete(LoginRequiredMixin, DeleteView):
 
 # Представления для вывода страницы с меню добавления различных объектов (Проект,
 # Язык программирования, Технология, Особенность)
-@login_required
-def data_page(request):
-    return render(request, template_name='data_page.html')
+class DataView(LoginRequiredMixin, TemplateView):
+    template_name = 'data_page.html'
 
 
 # Представления для вывода страницы "О проекте"
-def about(request):
-    return render(request, template_name='about.html', context={'title': 'О приложении'})
+class AboutView(TemplateView):
+    template_name = 'about.html'
+    extra_context = {'title': 'О приложении'}
 
 
 # Представления для вывода страницы "Успешное создание объекта"
-def successful_create(request):
-    return render(request, template_name='successful_create.html', context={'title': 'Удачное создание объекта'})
+class SuccessfulCreateView(TemplateView):
+    template_name = 'successful_create.html'
+    extra_context = {'title': 'Удачное создание объекта'}
 
 
 # Представления для вывода страницы "Успешное обновление объекта"
-def successful_update(request):
-    return render(request, template_name='successful_update.html', context={'title': 'Удачное обновление проекта'})
+class SuccessfulUpdateView(TemplateView):
+    template_name = 'successful_update.html'
+    extra_context = {'title': 'Удачное обновление проекта'}
 
 
 # Представления для вывода страницы "Успешное удаление объекта"
-def successful_delete(request, obj):
-    print(request.get_full_path())
-    print(request.path)
-    print(obj)
-    return render(request, template_name='successful_delete.html',
-                  context={'title': 'Удачное удаление объекта', 'object': obj})
+# def successful_delete(request, obj):
+#     return render(request, template_name='successful_delete.html',
+#                   context={'title': 'Удачное удаление объекта', 'object': obj})
+
+
+class SuccessfulDeleteView(TemplateView):
+    template_name = 'successful_delete.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['title'] = 'Удачное удаление объекта'
+        context['object'] = self.kwargs.get('obj')
+        return context
+

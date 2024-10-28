@@ -158,6 +158,22 @@ body {
                     font-family: 'Data', Courier, monospace;
                     font-size: 20px;
                     color: $data-color;
+
+                    u {
+                        margin-left: 5px;
+                        color: white;
+                        }
+
+                    .git-link {
+                        color: gold;
+                        padding: 5px 25px;
+                        border: 0.5px solid gold;
+                        border-radius: 30px 10px;
+
+                        &:hover {
+                            font-size: 21px;
+                            box-shadow: black 2px 5px;}
+                        }
                 }
 
             .project-languages, .project-technologies, .project-features {

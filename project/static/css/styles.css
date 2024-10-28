@@ -185,6 +185,17 @@ body {
       font-family: 'Data', Courier, monospace;
       font-size: 20px;
       color: #3657ff; }
+      .main .project-details .project-item u {
+        margin-left: 5px;
+        color: white; }
+      .main .project-details .project-item .git-link {
+        color: gold;
+        padding: 5px 25px;
+        border: 0.5px solid gold;
+        border-radius: 30px 10px; }
+        .main .project-details .project-item .git-link:hover {
+          font-size: 21px;
+          box-shadow: black 2px 5px; }
     .main .project-details .project-languages, .main .project-details .project-technologies, .main .project-details .project-features {
       display: flex;
       flex-direction: row;

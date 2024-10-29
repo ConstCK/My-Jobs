@@ -268,11 +268,6 @@ class SuccessfulUpdateView(TemplateView):
 
 
 # Представления для вывода страницы "Успешное удаление объекта"
-# def successful_delete(request, obj):
-#     return render(request, template_name='successful_delete.html',
-#                   context={'title': 'Удачное удаление объекта', 'object': obj})
-
-
 class SuccessfulDeleteView(TemplateView):
     template_name = 'successful_delete.html'
 

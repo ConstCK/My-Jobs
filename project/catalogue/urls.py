@@ -28,6 +28,6 @@ urlpatterns = [
     path('data-page', DataView.as_view(), name='data_page'),
     path('about', AboutView.as_view(), name='about'),
     path('successful-update', SuccessfulUpdateView.as_view(), name='successful_update'),
-    path('successful-delete/<str:obj>',SuccessfulDeleteView.as_view() , name='successful_delete'),
+    path('successful-delete/<str:obj>', SuccessfulDeleteView.as_view(), name='successful_delete'),
     path('successful-create', SuccessfulCreateView.as_view(), name='successful_create')
 ]

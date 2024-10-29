@@ -127,6 +127,8 @@ body {
     font-size: 22px; }
   .main .main-title {
     margin: 20px auto 10px; }
+    .main .main-title p {
+      font-size: 24px; }
   .main .selected-category {
     margin: 10px auto 0; }
   .main .main-content {

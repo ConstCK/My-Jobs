@@ -24,6 +24,9 @@
     <main class="main">
         {% block main %}
         {% endblock main %}
+        {% block scripts %}
+            <script src="{% static 'js/main.js' %}"></script>
+        {% endblock scripts %}
     </main>
     <footer class="footer">
         {% block footer %}

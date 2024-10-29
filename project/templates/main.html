@@ -5,9 +5,7 @@
 <div class="main-content">
     <h1 class="main-title">Список проектов</h1>
     <h2 class="selected-category">Выбранная категория: <u> {{ category }} </u></h2>
-    {% if description%}
-        <h3 class="selected-category">Описание: <u> {{ description }} </u></h3>
-    {% endif %}
+    <h3 class="selected-category">Описание: <u> {{ description | default:"Без описания"  }} </u></h3>
             <div class="projects">
                 {% if not user.is_authenticated %}
                 <h2 class="message">Авторизуйтесь для получения данных</h2>

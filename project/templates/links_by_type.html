@@ -6,6 +6,7 @@
 
     {% for link in links%}
     <section class="link-content {% is_important_link link.important %}">
+        <div>{% smile_for_important_link link.important %}</div>
         <h2 class="link-item"><u>{{ link.name }}</u></h2>
         <a class="link-item net-link" href="{{link.link_url}}" target="_blank"><u>{{ link.link_url }}</u></a>
         <a class="nav-link link-item" href="{% url 'delete_link' link.pk %}">Delete link</a>

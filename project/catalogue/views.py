@@ -1,11 +1,13 @@
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.db.models import Min
 from django.shortcuts import render
 from django.urls import reverse_lazy
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView, TemplateView
 
-from .forms import ProjectForm
-from .models import Project, Language, Technology, Feature
+from .constants import LinkType
+from .forms import ProjectForm, LinkForm
+from .models import Project, Language, Technology, Feature, Link
 from .utils import CategoriesMixin, ProjectsDataMixin
 
 
@@ -132,6 +134,15 @@ class ProjectAdd(CreateView):
         return super().form_valid(form)
 
 
+# Представление для добавления ссылки на полезные страницы
+class LinkAdd(LoginRequiredMixin, CreateView):
+    form_class = LinkForm
+    template_name = 'link_create.html'
+    context_object_name = 'link'
+    extra_context = {'title': 'Добавление ссылки'}
+    success_url = reverse_lazy('successful_create')
+
+
 # Представление для получения полной информации о проекте
 class ProjectDetail(LoginRequiredMixin, DetailView):
     model = Project
@@ -243,6 +254,20 @@ class ProjectDelete(LoginRequiredMixin, DeleteView):
                             kwargs={'obj': f'Проект {obj.name}'})
 
 
+# Представление для удаления ссылки
+class LinkDelete(LoginRequiredMixin, DeleteView):
+    model = Link
+    template_name = 'link_delete.html'
+    extra_context = {'title': 'Удаление ссылки'}
+    success_url = reverse_lazy('successful_delete')
+
+    # Способ передачи данных в функцию-обработчик успешного удаления объекта
+    def get_success_url(self, *args, **kwargs):
+        obj = Link.objects.get(pk=self.get_object().id)
+        return reverse_lazy('successful_delete',
+                            kwargs={'obj': f'Проект {obj.name}'})
+
+
 # Представления для вывода страницы с меню добавления различных объектов (Проект,
 # Язык программирования, Технология, Особенность)
 class DataView(LoginRequiredMixin, TemplateView):
@@ -253,6 +278,43 @@ class DataView(LoginRequiredMixin, TemplateView):
 class AboutView(TemplateView):
     template_name = 'about.html'
     extra_context = {'title': 'О приложении'}
+
+
+# Представления для вывода страницы с перечнем типов полезных ссылок
+class LinksView(ListView):
+    model = Link
+    context_object_name = 'links'
+    template_name = 'all_links.html'
+    extra_context = {'title': 'Категории ссылок'}
+
+    def get_queryset(self):
+        data = Link.objects.all()
+
+        # Создание queryset из неповторяющихся типов ссылок для создания категорий
+        queryset = dict()
+        for i in data:
+            if not queryset.get(str(i.type), None):
+                queryset[str(i.type)] = i.get_type_display()
+
+        return queryset
+
+
+# Представления для вывода страницы с перечнем полезных ссылок указанного типа
+class LinkByTypeView(ListView):
+    model = Link
+    context_object_name = 'links'
+    extra_context = {'title': 'Полезные ссылки'}
+    template_name = 'links_by_type.html'
+
+    # Выбор всех ссылок с указанным типом
+    def get_queryset(self):
+        queryset = Link.objects.filter(type=self.kwargs.get('type'))
+        return queryset
+
+    def get_context_data(self, *, object_list=None, **kwargs):
+        context = super().get_context_data(object_list=None, **kwargs)
+        context['category'] = LinkType[self.kwargs.get('type')].label
+        return context
 
 
 # Представления для вывода страницы "Успешное создание объекта"
@@ -276,4 +338,3 @@ class SuccessfulDeleteView(TemplateView):
         context['title'] = 'Удачное удаление объекта'
         context['object'] = self.kwargs.get('obj')
         return context
-

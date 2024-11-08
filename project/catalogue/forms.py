@@ -4,7 +4,7 @@ from django import forms
 from django.core.exceptions import ValidationError
 from django.forms import DateInput
 
-from .models import Project
+from .models import Project, Link
 
 
 # Форма для добавления нового проекта с дополнительной валидацией некоторых полей
@@ -23,11 +23,15 @@ class ProjectForm(forms.ModelForm):
             raise ValidationError('Введите дату в формате ДД.ММ.ГГГГ')
         if not cleaned_data.get('pc_url').startswith('C:\\Users\\'):
             raise ValidationError('Неверно указан путь к директории проекта')
-        if (cleaned_data.get('git_url') and not cleaned_data.get('git_url')
-                .startswith('https://github.com/')):
-            raise ValidationError('Неверно указан путь к удаленному репозиторию проекта')
         return cleaned_data
 
     class Meta:
         model = Project
         exclude = ['author']
+
+
+# Форма для добавления новой ссылки
+class LinkForm(forms.ModelForm):
+    class Meta:
+        model = Link
+        fields = '__all__'

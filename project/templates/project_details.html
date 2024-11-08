@@ -6,11 +6,11 @@
     <h1 class="main-title">Название проекта: <u>{{ project.name }}</u></h1>
     <h2 class="project-item">Описание: <u>{{project.description}}</u></h2>
     <h2 class="project-item">Дата создания: <u>{{project.created_at | date:"F Y"}}</u></h2>
-    <h2 class="project-item">Тип проекта: <u>{{project.type }}</u></h2>
+    <h2 class="project-item">Тип проекта: <u>{{project.get_type_display }}</u></h2>
     <h2 class="project-item" id="pc-url">Ссылка на диске: <u>{{project.pc_url }}</u></h2>
     <button class="nav-link" id="copy-button">Copy project url</button>
     {% if project.git_url %}
-    <a class="project-item" href="{{project.git_url}}" target="_blank">Ссылка на GitHub: <u class="git-link">{{project.git_url }}</u></a>
+    <a class="project-item" href="{{project.git_url}}" target="_blank">Ссылка на GitHub: <u class="net-link">{{project.git_url }}</u></a>
     {% else %}
     <h2 class="project-item">Ссылка на GitHub: - </h2>
     {% endif %}

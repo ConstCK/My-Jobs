@@ -36,6 +36,12 @@ body {
             color: red;
             font-family: 'Data', Courier, monospace;
             }
+
+        .important {
+            border: 2px solid gold;
+            color: gold;
+            font-weight: 900;
+            }
     }
 
 .header {
@@ -97,10 +103,7 @@ body {
 
         .main-title {
             margin: 20px auto 10px;
-
-            p {
-                font-size: 24px;
-                }
+            font-size: 24px;
             }
 
         .selected-category {
@@ -151,6 +154,45 @@ body {
                 }
             }
 
+        .useful-links-content {
+            @include flex-c;
+            justify-content: flex-start;
+            width: 100%;
+            min-height: 60vh;
+            border: 0.3px solid $border-color;
+
+                .net-link {
+                    color: gold;
+                    width: 60%;
+                    padding: 5px 25px;
+                    border: 0.5px solid gold;
+                    border-radius: 30px 10px;
+
+                    &:hover {
+                        font-size: 21px;
+                        box-shadow: black 2px 5px;
+                            }
+                        }
+
+                .nav-link {
+                    width: 60%;
+                        }
+
+                .link-item {
+                    margin: 10px auto;
+                        }
+
+                .link-content {
+                    @include flex-c;
+                    width: 95%;
+                    border: 0.3px solid $border-color;
+                    margin: 5px 10px;
+                    padding: 10px;
+                    color: $data-color;
+                    font-family: 'Data', Courier, monospace;
+                    }
+            }
+
         .project-details {
             @include flex-c;
             width: 100%;
@@ -168,7 +210,7 @@ body {
                         color: white;
                         }
 
-                    .git-link {
+                    .net-link {
                         color: gold;
                         padding: 5px 25px;
                         border: 0.5px solid gold;
@@ -176,9 +218,11 @@ body {
 
                         &:hover {
                             font-size: 21px;
-                            box-shadow: black 2px 5px;}
+                            box-shadow: black 2px 5px;
+                                }
+                            }
+
                         }
-                }
 
             .project-languages, .project-technologies, .project-features {
                 @include categories;
@@ -190,7 +234,7 @@ body {
                 }
 
             .nav-link {
-                width: 40%;
+                width: 60%;
                 }
 
             .project-modify {

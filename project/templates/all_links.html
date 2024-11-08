@@ -1,0 +1,12 @@
+{% extends 'default.html' %}
+{% block main %}
+<div class="useful-links-content">
+    <h1 class="main-title">Категории ссылок</h1>
+    {% if user.is_authenticated %}
+        <a class="nav-link link-item important" href="{% url 'add_link' %}">ДОБАВИТЬ ССЫЛКУ</a>
+    {% endif  %}
+    {% for key, link in links.items %}
+        <a class="nav-link link-item" href="{% url 'link_by_type' key %}">{{ link }}</a>
+    {% endfor %}
+</div>
+{% endblock main %}

@@ -2,7 +2,7 @@ from django.contrib.auth.models import User
 from django.db import models
 from django.urls import reverse
 
-from .constants import Type
+from .constants import ProjectType, LinkType
 
 
 class Language(models.Model):
@@ -50,7 +50,8 @@ class Project(models.Model):
     description = models.CharField(max_length=512, verbose_name='Описание проекта')
     author = models.ForeignKey(User, on_delete=models.CASCADE, verbose_name='Автор проекта')
     created_at = models.DateField(verbose_name='Дата создания проекта')
-    type = models.CharField(max_length=64, choices=Type.choices, default=Type.PET, verbose_name='Тип проекта')
+    type = models.CharField(max_length=64, choices=ProjectType.choices, default=ProjectType.PET,
+                            verbose_name='Тип проекта')
     git_url = models.URLField(unique=True, null=True, blank=True, verbose_name='Ссылка на GitHub')
     pc_url = models.CharField(max_length=512, unique=True, verbose_name='Ссылка на папку проекта')
     languages = models.ManyToManyField('Language',
@@ -69,4 +70,22 @@ class Project(models.Model):
     class Meta:
         verbose_name = 'Проект'
         verbose_name_plural = 'Проекты'
-        ordering=['name']
+        ordering = ['name']
+
+
+class Link(models.Model):
+    name = models.CharField(max_length=128, verbose_name='Название ссылки')
+    type = models.CharField(max_length=64, choices=LinkType.choices,
+                            default=LinkType.OFFICIAL,
+                            verbose_name='Тип ссылки')
+    link_url = models.URLField(unique=True, null=True, blank=True,
+                               verbose_name='Ссылка на полезную страницу')
+
+    def __str__(self):
+        return f'{self.name}'
+
+    class Meta:
+        verbose_name = 'Ссылка'
+        verbose_name_plural = 'Ссылки'
+        ordering = ['name']
+        constraints = (models.UniqueConstraint(fields=('name', 'type'), name='Unique constraint'), )

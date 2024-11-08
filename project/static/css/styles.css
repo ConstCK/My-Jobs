@@ -51,6 +51,7 @@ body {
     padding: 10px 20px;
     margin: 20px;
     transition: all 0.3s ease-out;
+    text-shadow: 4px 5px 2px rgba(0, 0, 0, 0.9);
     cursor: pointer; }
     body .nav-link:hover, body .form-btn:hover {
       transform: scale(1.05);
@@ -65,6 +66,10 @@ body {
     border: 2px solid red;
     color: red;
     font-family: 'Data', Courier, monospace; }
+  body .important {
+    border: 2px solid gold;
+    color: gold;
+    font-weight: 900; }
 
 .header {
   display: flex;
@@ -126,9 +131,8 @@ body {
     font-family: 'Data', Courier, monospace;
     font-size: 22px; }
   .main .main-title {
-    margin: 20px auto 10px; }
-    .main .main-title p {
-      font-size: 24px; }
+    margin: 20px auto 10px;
+    font-size: 24px; }
   .main .selected-category {
     margin: 10px auto 0; }
   .main .main-content {
@@ -174,6 +178,39 @@ body {
         color: white; }
         .main .projects .project-content .project-dependencies .project-dependency {
           margin: 10px; }
+  .main .useful-links-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    justify-content: flex-start;
+    width: 100%;
+    min-height: 60vh;
+    border: 0.3px solid #00727a; }
+    .main .useful-links-content .net-link {
+      color: gold;
+      width: 60%;
+      padding: 5px 25px;
+      border: 0.5px solid gold;
+      border-radius: 30px 10px; }
+      .main .useful-links-content .net-link:hover {
+        font-size: 21px;
+        box-shadow: black 2px 5px; }
+    .main .useful-links-content .nav-link {
+      width: 60%; }
+    .main .useful-links-content .link-item {
+      margin: 10px auto; }
+    .main .useful-links-content .link-content {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      width: 95%;
+      border: 0.3px solid #00727a;
+      margin: 5px 10px;
+      padding: 10px;
+      color: #3657ff;
+      font-family: 'Data', Courier, monospace; }
   .main .project-details {
     display: flex;
     flex-direction: column;
@@ -190,12 +227,12 @@ body {
       .main .project-details .project-item u {
         margin-left: 5px;
         color: white; }
-      .main .project-details .project-item .git-link {
+      .main .project-details .project-item .net-link {
         color: gold;
         padding: 5px 25px;
         border: 0.5px solid gold;
         border-radius: 30px 10px; }
-        .main .project-details .project-item .git-link:hover {
+        .main .project-details .project-item .net-link:hover {
           font-size: 21px;
           box-shadow: black 2px 5px; }
     .main .project-details .project-languages, .main .project-details .project-technologies, .main .project-details .project-features {
@@ -211,7 +248,7 @@ body {
       .main .project-details .project-languages .project-language, .main .project-details .project-languages .project-technology, .main .project-details .project-languages .project-feature, .main .project-details .project-technologies .project-language, .main .project-details .project-technologies .project-technology, .main .project-details .project-technologies .project-feature, .main .project-details .project-features .project-language, .main .project-details .project-features .project-technology, .main .project-details .project-features .project-feature {
         margin: 5px 8px; }
     .main .project-details .nav-link {
-      width: 40%; }
+      width: 60%; }
     .main .project-details .project-modify {
       display: flex;
       flex-direction: row;

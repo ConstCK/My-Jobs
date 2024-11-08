@@ -1,0 +1,20 @@
+{% extends 'default.html' %}
+
+{% block main %}
+    <div class="object-create">
+        <form action="" method="post">
+        {% csrf_token %}
+        {% if form.errors %}
+            <div class="form-errors">{{ form.non_field_errors }}</div>
+        {% endif %}
+            <div class="form-label">{{ form.name.label }}</div>
+            <div class="form-input">{{ form.name }}</div>
+            <div class="form-label">{{ form.type.label }}</div>
+            <div class="form-input">{{ form.type }}</div>
+            <div class="form-errors">{{ form.link_url.errors }}</div>
+            <div class="form-label">{{ form.link_url.label }}</div>
+            <div class="form-input">{{ form.link_url }}</div>
+        <button class="form-btn" type="submit">Create</button>
+        </form>
+    </div>
+{% endblock main %}

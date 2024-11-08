@@ -80,6 +80,7 @@ class Link(models.Model):
                             verbose_name='Тип ссылки')
     link_url = models.URLField(unique=True, null=True, blank=True,
                                verbose_name='Ссылка на полезную страницу')
+    important = models.BooleanField(default=False)
 
     def __str__(self):
         return f'{self.name}'

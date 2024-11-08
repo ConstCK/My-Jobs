@@ -1,6 +1,6 @@
 $primary-color: #f5a505;
 $secondary-color: chocolate;
-$data-color: #3657ff;
+$data-color: #50ffdf;
 $border-color: #00727a;
 $primary-background-color: rgba(0,0,0,0.8);
 $secondary-background-color: teal;
@@ -15,7 +15,7 @@ $btn-active-font-weight: 800;
 
 @font-face {
   font-family: 'Primary';
-  src: url("/static/fonts/Karmen.ttf");
+  src: url("/static/fonts/WoodenShipDecorated.ttf");
 }
 
 @font-face {
@@ -35,5 +35,5 @@ $btn-active-font-weight: 800;
 
 @font-face {
   font-family: "Data";
-  src: url("/static/fonts/Cony.ttf");
+  src: url("/static/fonts/Ardeco.ttf");
 }

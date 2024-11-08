@@ -296,7 +296,7 @@ class LinksView(ListView):
             if not queryset.get(str(i.type), None):
                 queryset[str(i.type)] = i.get_type_display()
 
-        return queryset
+        return dict(sorted(queryset.items(), key=lambda item: item[1]))
 
 
 # Представления для вывода страницы с перечнем полезных ссылок указанного типа

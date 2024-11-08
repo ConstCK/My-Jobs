@@ -11,3 +11,11 @@ def get_active_class(context, url: str, *args) -> str:
     if context.get('request').path == reverse(url, args=args):
         return "active"
     return ""
+
+
+@register.simple_tag(takes_context=False)
+def is_important_link(data) -> str:
+    print('!!!!!!', data)
+    if data:
+        return "important-link"
+    return ""

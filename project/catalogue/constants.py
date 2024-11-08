@@ -15,7 +15,7 @@ class LinkType(models.TextChoices):
     API = 'API', _('Api')
     TEMPLATES = 'TEMPLATES', _('Шаблоны')
     FONTS = 'FONTS', _('Шрифты')
-    PICS = 'PICS', _('Обои, иконки и аватарки')
+    PICS = 'PICS', _('Изображения, иконки и аватары')
     MODIFY = 'MODIFY', _('Проверка и редактирование')
     HOSTING = 'HOSTING', _('Хостинг')
     TIPS = 'TIPS', _('Шпаргалки и советы')

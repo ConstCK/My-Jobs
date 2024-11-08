@@ -1,10 +1,11 @@
 {% extends 'default.html' %}
+{% load custom_tags %}
 {% block main %}
 <div class="useful-links-content">
     <h1 class="main-title">Ссылки из категории: <u>{{ category }}</u></h1>
 
     {% for link in links%}
-    <section class="link-content">
+    <section class="link-content {% is_important_link link.important %}">
         <h2 class="link-item"><u>{{ link.name }}</u></h2>
         <a class="link-item net-link" href="{{link.link_url}}" target="_blank"><u>{{ link.link_url }}</u></a>
         <a class="nav-link link-item" href="{% url 'delete_link' link.pk %}">Delete link</a>

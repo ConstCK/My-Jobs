@@ -14,6 +14,6 @@ class LogInForm(AuthenticationForm):
     class Meta:
         model = User
         fields = (
-            "username",
-            "password",
+            'username',
+            'password',
         )

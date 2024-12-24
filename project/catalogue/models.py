@@ -56,7 +56,7 @@ class Project(models.Model):
     pc_url = models.CharField(max_length=512, unique=True, verbose_name='Ссылка на папку проекта')
     languages = models.ManyToManyField('Language',
                                        verbose_name='Используемый язык программирования')
-    technologies = models.ManyToManyField('Technology',
+    technologies = models.ManyToManyField('Technology', blank=True,
                                           verbose_name='Используемая технология')
     features = models.ManyToManyField('Feature', blank=True,
                                       verbose_name='Особенности проекта')

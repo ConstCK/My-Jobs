@@ -4,420 +4,435 @@
 
 
 body {
-        max-width: 90%;
-        display: flex;
-        flex: 1 0 auto;
-        flex-direction: column;
-        justify-content: center;
-        text-align: center;
-        margin: 0 auto;
-        border: 8px groove #023236;
-        overflow-x: hidden;
+    max-width: 90%;
+    display: flex;
+    flex: 1 0 auto;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    margin: 0 auto;
+    border: 8px groove #023236;
+    overflow-x: hidden;
 
-        button {
-            text-decoration: none;
-            font-family: 'Secondary', Courier, monospace;
-            }
-
-        .nav-link, .form-btn {
-            @include btn;
-
-            &:hover {
-                @include btn-hover;
-                }
-
-            &:active {
-                @include btn-active;
-                }
-            }
-
-        .active {
-            border: 2px solid red;
-            color: red;
-            font-family: 'Data', Courier, monospace;
-            }
-
-        .important {
-            border: 2px solid gold;
-            color: gold;
-            font-weight: 900;
-            }
+    button {
+        text-decoration: none;
+        font-family: 'Secondary', Courier, monospace;
     }
+
+    .nav-link,
+    .form-btn {
+        @include btn;
+
+        &:hover {
+            @include btn-hover;
+        }
+
+        &:active {
+            @include btn-active;
+        }
+    }
+
+    .active {
+        border: 2px solid red;
+        color: red;
+        font-family: 'Data', Courier, monospace;
+    }
+
+    .important {
+        border: 2px solid gold;
+        color: gold;
+        font-weight: 900;
+    }
+}
 
 .header {
-        @include flex-c;
-        max-height: 28vh;
-        max-width: 100%;
-        font-family: 'Primary', Courier, monospace;
-        color: $secondary-color;
-        background-color: $primary-background-color;
-        border: 0.3px solid $border-color;
+    @include flex-c;
+    max-height: 28vh;
+    max-width: 100%;
+    font-family: 'Primary', Courier, monospace;
+    color: $secondary-color;
+    background-color: $primary-background-color;
+    border: 0.3px solid $border-color;
 
-        .main-title {
-            color: #ff462e;
-            font-family: 'Main', Courier, monospace;
-            font-size: 40px;
-            margin: 10px auto;
-            }
-
-        .header-title {
-            margin: 0 auto 5px;
-            font-size: 36px;
-            }
-
-        .navigation {
-            @include flex-r;
-            font-family: 'Secondary', Courier, monospace;
-
-            .nav-bar {
-                @include flex-r;
-                }
-
-            .auth-bar {
-                @include flex-r;
-                }
-
-            .username {
-                @include flex-r;
-                margin: 10px 20px;
-                font-size: 24px;
-                }
-            }
+    .main-title {
+        color: #ff462e;
+        font-family: 'Main', Courier, monospace;
+        font-size: 40px;
+        margin: 10px auto;
     }
 
-.main {
+    .header-title {
+        margin: 0 auto 5px;
+        font-size: 36px;
+    }
+
+    .navigation {
         @include flex-r;
-        align-items: flex-start;
-        min-height: 60vh;
-        max-width: 100%;
-        color: $primary-color;
-        background-color: $primary-background-color;
-        font-family: 'Main', Courier, monospace;
-        overflow-y: visible;
+        font-family: 'Secondary', Courier, monospace;
 
-        .form-errors {
-            margin: 10px;
-            color: red;
-            font-family: 'Data', Courier, monospace;
-            font-size: 22px;
-            }
+        .nav-bar,
+        .auth-bar {
+            @include flex-r;
+        }
 
-        .main-title {
-            margin: 20px auto 10px;
+        .username {
+            @include flex-r;
+            margin: 10px 20px;
             font-size: 24px;
-            }
+        }
+    }
+}
 
-        .selected-category {
-            margin: 10px auto 0;
-            }
+.main {
+    @include flex-r;
+    align-items: flex-start;
+    min-height: 60vh;
+    max-width: 100%;
+    color: $primary-color;
+    background-color: $primary-background-color;
+    font-family: 'Main', Courier, monospace;
+    overflow-y: visible;
 
-        .main-content {
+    .form-errors {
+        margin: 10px;
+        color: red;
+        font-family: 'Data', Courier, monospace;
+        font-size: 22px;
+    }
+
+    .main-title {
+        margin: 20px auto 10px;
+        font-size: 24px;
+    }
+
+    .selected-category {
+        margin: 10px auto 0;
+    }
+
+    .main-content {
+        @include flex-c;
+        width: 75vw;
+        border: 0.3px solid $border-color;
+
+        .project-item {
+            width: 80%;
+            margin: 7px;
+        }
+    }
+
+    .projects {
+        @include flex-c;
+        margin: 5px auto;
+        width: 95%;
+
+        .project-content {
             @include flex-c;
-            width: 75vw;
-            border: 0.3px solid $border-color;
-
-           .project-item {
-                width: 80%;
-                margin: 7px;
-                }
-            }
-
-        .projects {
-            @include flex-c;
-            margin: 5px auto;
             width: 95%;
-
-            .project-content {
-                @include flex-c;
-                width: 95%;
-                border: 0.3px solid $border-color;
-                margin: 5px 10px;
-                padding: 10px;
-                color: $data-color;
-                font-family: 'Data', Courier, monospace;
-
-                .project-item {
-                    width: 95%;
-                    margin: 7px;
-                    }
-
-                .nav-link {
-                    width: 80%;
-                    }
-
-                .project-dependencies {
-                    @include categories;
-
-                    .project-dependency {
-                        margin: 10px;
-                        }
-                    }
-                }
-            }
-
-        .useful-links-content {
-            @include flex-c;
-            justify-content: flex-start;
-            width: 100%;
-            min-height: 60vh;
             border: 0.3px solid $border-color;
-
-                .net-link {
-                    color: gold;
-                    width: 60%;
-                    padding: 5px 25px;
-                    border: 0.5px solid gold;
-                    border-radius: 30px 10px;
-
-                    &:hover {
-                        font-size: 21px;
-                        box-shadow: black 2px 5px;
-                            }
-                        }
-
-                .nav-link {
-                    width: 60%;
-                        }
-
-                .link-item {
-                    margin: 10px auto;
-                        }
-
-                .link-content {
-                    @include flex-c;
-                    width: 95%;
-                    border: 0.3px solid $border-color;
-                    margin: 5px 10px;
-                    padding: 10px;
-                    color: $data-color;
-                    font-family: 'Data', Courier, monospace;
-                        }
-
-                .important-link {
-                    border: 4px solid gold;
-                    border-radius: 20px;
-                    background-color: teal;
-                        }
-            }
-
-        .project-details {
-            @include flex-c;
-            width: 100%;
-            border: 0.3px solid $border-color;
+            margin: 5px 10px;
+            padding: 10px;
+            color: $data-color;
+            font-family: 'Data', Courier, monospace;
 
             .project-item {
-                    width: 95%;
-                    margin: 7px;
-                    font-family: 'Data', Courier, monospace;
-                    font-size: 20px;
-                    color: $data-color;
-
-                    u {
-                        margin-left: 5px;
-                        color: white;
-                        }
-
-                    .net-link {
-                        color: gold;
-                        padding: 5px 25px;
-                        border: 0.5px solid gold;
-                        border-radius: 30px 10px;
-
-                        &:hover {
-                            font-size: 21px;
-                            box-shadow: black 2px 5px;
-                                }
-                            }
-
-                        }
-
-            .project-languages, .project-technologies, .project-features {
-                @include categories;
-                margin: 10px auto;
-                padding: 10px;
-                .project-language, .project-technology, .project-feature {
-                margin: 5px 8px;
-                    }
-                }
-
-            .nav-link {
-                width: 60%;
-                }
-
-            .project-modify {
-                @include flex-r;
-                width: 80%;
-                margin: 15px auto;
-                }
-            }
-
-        .project-delete {
-            @include flex-c;
-            }
-
-        .project-update, .object-create {
-            @include flex-c;
-            width: 80vw;
-
-            .update-title, .create-title {
-                margin: 15px;
-                }
-
-            .form-label {
-                font-size: $label-font-size;
-                margin: 10px;
-                }
-
-            input {
-                margin: 5px;
-                width: 60vw;
-                text-align: center;
-                padding: 5px 10px;
-                font-family: 'Main', Courier, monospace;
-                font-size: $input-font-size;
-                }
-
-            select {
-                margin: 5px;
-                width: 62vw;
-                text-align: center;
-                padding: 5px 10px;
-                font-family: 'Main', Courier, monospace;
-                font-size: $input-font-size;
-                }
-            }
-
-        .data-content {
-            @include flex-c;
-            width: 100%;
-
-            .data-title {
+                width: 95%;
                 margin: 7px;
-                }
+            }
 
             .nav-link {
                 width: 80%;
-                }
-            .language-data, .technology-data, .feature-data {
-                @include flex-r;
-                width: 100%;
+            }
 
-                .nav-link {
-                    width: 40%;
-                    }
+            .project-dependencies {
+                @include categories;
 
+                .project-dependency {
+                    margin: 10px;
                 }
             }
-        .language-list, .technology-list, .feature-list {
-            width: 100%;
+        }
+    }
+
+    .useful-links-content {
+        @include flex-c;
+        justify-content: flex-start;
+        width: 100%;
+        min-height: 60vh;
+        border: 0.3px solid $border-color;
+
+        .net-link {
+            color: gold;
+            width: 60%;
+            padding: 5px 25px;
+            border: 0.5px solid gold;
+            border-radius: 30px 10px;
+
+            &:hover {
+                font-size: 21px;
+                box-shadow: black 2px 5px;
             }
-        .languages, .technologies, .features {
+        }
+
+        .nav-link {
+            width: 60%;
+        }
+
+        .link-item {
+            margin: 10px auto;
+        }
+
+        .link-content {
             @include flex-c;
-            height: 100%;
+            width: 95%;
+            border: 0.3px solid $border-color;
+            margin: 5px 10px;
+            padding: 10px;
+            color: $data-color;
+            font-family: 'Data', Courier, monospace;
+        }
+
+        .important-link {
+            border: 4px solid gold;
+            border-radius: 20px;
+            background-color: teal;
+        }
+    }
+
+    .project-details {
+        @include flex-c;
+        width: 100%;
+        border: 0.3px solid $border-color;
+
+        .project-item {
+            width: 95%;
+            margin: 7px;
+            font-family: 'Data', Courier, monospace;
+            font-size: 20px;
+            color: $data-color;
+
+            u {
+                margin-left: 5px;
+                color: white;
+            }
+
+            .net-link {
+                color: gold;
+                padding: 5px 25px;
+                border: 0.5px solid gold;
+                border-radius: 30px 10px;
+
+                &:hover {
+                    font-size: 21px;
+                    box-shadow: black 2px 5px;
+                }
+            }
+
+        }
+
+        .project-languages,
+        .project-technologies,
+        .project-features {
+            @include categories;
+            margin: 10px auto;
+            padding: 10px;
+
+            .project-language,
+            .project-technology,
+            .project-feature {
+                margin: 5px 8px;
+            }
+        }
+
+        .nav-link {
+            width: 60%;
+        }
+
+        .project-modify {
+            @include flex-r;
+            width: 80%;
+            margin: 15px auto;
+        }
+    }
+
+    .project-delete {
+        @include flex-c;
+    }
+
+    .project-update,
+    .object-create {
+        @include flex-c;
+        width: 80vw;
+
+        .update-title,
+        .create-title {
+            margin: 15px;
+        }
+
+        .form-label {
+            font-size: $label-font-size;
+            margin: 10px;
+        }
+
+        input {
+            margin: 5px;
+            width: 60vw;
+            text-align: center;
+            padding: 5px 10px;
+            font-family: 'Main', Courier, monospace;
+            font-size: $input-font-size;
+        }
+
+        select {
+            margin: 5px;
+            width: 62vw;
+            text-align: center;
+            padding: 5px 10px;
+            font-family: 'Main', Courier, monospace;
+            font-size: $input-font-size;
+        }
+    }
+
+    .data-content {
+        @include flex-c;
+        width: 100%;
+
+        .data-title {
+            margin: 7px;
+        }
+
+        .nav-link {
+            width: 80%;
+        }
+
+        .language-data,
+        .technology-data,
+        .feature-data {
+            @include flex-r;
+            width: 100%;
 
             .nav-link {
-                width: 60%;
-                }
+                width: 40%;
             }
 
-        .side-bar {
-            width: 25vw;
-            min-height: 100%;
-            border: 0.3px solid $border-color;
+        }
+    }
 
-            .side-bar-content {
+    .language-list,
+    .technology-list,
+    .feature-list {
+        width: 100%;
+    }
+
+    .languages,
+    .technologies,
+    .features {
+        @include flex-c;
+        height: 100%;
+
+        .nav-link {
+            width: 60%;
+        }
+    }
+
+    .side-bar {
+        width: 25vw;
+        min-height: 100%;
+        border: 0.3px solid $border-color;
+
+        .side-bar-content {
+            @include flex-c;
+            align-items: stretch;
+            margin: 20px auto;
+
+            .bar {
                 @include flex-c;
                 align-items: stretch;
-                margin: 20px auto;
+                min-height: 100px;
+                width: 95%;
+                margin: 10px 5px;
+                padding: 10px 5px;
+            }
 
-                .bar {
-                    @include flex-c;
-                    align-items: stretch;
-                    min-height: 100px;
-                    width: 95%;
-                    margin: 10px 5px;
-                    padding: 10px 5px;
-                    }
+            .categories {
+                @include flex-r;
+                flex-wrap: wrap;
 
-                .categories {
-                    @include flex-r;
-                    flex-wrap: wrap;
-
-                    .nav-link {
+                .nav-link {
                     min-width: 37%;
                     max-width: 37%;
                     padding: 5px 10px;
                     margin: 5px;
-                        }
-                    }
+                }
+            }
 
-                .all-categories {
-                    max-width: 80%;
-                    }
+            .all-categories {
+                max-width: 80%;
+            }
 
-                .language, .technology, .feature  {
-                    margin: 15px auto;
+            .language,
+            .technology,
+            .feature {
+                margin: 15px auto;
 
-                    .categories {
-                        @include flex-c;
-                        flex-wrap: nowrap;
+                .categories {
+                    @include flex-c;
+                    flex-wrap: nowrap;
 
-                        .nav-link {
+                    .nav-link {
                         min-width: 80%;
                         max-width: 80%;
-                            }
-                        }
                     }
                 }
             }
-
-        .auth-page {
-            @include flex-c;
-            width: 100%;
-            font-family: 'Primary', Courier, monospace;
-            font-size: $input-font-size;
-
-            .auth-title {
-                margin: 15px;
-                }
-
-            .form-label {
-                margin: 10px;
-                }
-
-            .form-input {
-                margin: 5px;
-
-                input {
-                    padding: 5px 15px;
-                    font-family: 'Main', Courier, monospace;
-                    font-size: $input-font-size;
-                    }
-                }
-            }
-
-        .message {
-            min-width: 100%;
-            color: $data-color;
-            font-family: 'Main', Courier, monospace;
-            font-size: 32px;
-            margin: 25px auto;
-            }
+        }
     }
+
+    .auth-page {
+        @include flex-c;
+        width: 100%;
+        font-family: 'Primary', Courier, monospace;
+        font-size: $input-font-size;
+
+        .auth-title {
+            margin: 15px;
+        }
+
+        .form-label {
+            margin: 10px;
+        }
+
+        .form-input {
+            margin: 5px;
+
+            input {
+                padding: 5px 15px;
+                font-family: 'Main', Courier, monospace;
+                font-size: $input-font-size;
+            }
+        }
+    }
+
+    .message {
+        min-width: 100%;
+        color: $data-color;
+        font-family: 'Main', Courier, monospace;
+        font-size: 32px;
+        margin: 25px auto;
+    }
+}
 
 .footer {
-        @include flex-c;
-        min-height: 12vh;
-        max-width: 100%;
-        border: 0.3px solid $border-color;
-        background-color: $primary-background-color;
+    @include flex-c;
+    min-height: 12vh;
+    max-width: 100%;
+    border: 0.3px solid $border-color;
+    background-color: $primary-background-color;
 
-        .footer-content {
-            font-family: 'Manuscript', Courier, monospace;
-            font-size: $footer-font-size;
-            font-weight: $footer-font-weight;
-            color: $secondary-color;
-            margin: 5px;
-            }
+    .footer-content {
+        font-family: 'Manuscript', Courier, monospace;
+        font-size: $footer-font-size;
+        font-weight: $footer-font-weight;
+        color: $secondary-color;
+        margin: 5px;
     }
-
+}

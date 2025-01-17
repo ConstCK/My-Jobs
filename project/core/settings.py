@@ -119,4 +119,3 @@ STATICFILES_FINDERS = [
 
 # Перенаправление при авторизации
 LOGIN_REDIRECT_URL = 'home'
-

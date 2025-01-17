@@ -24,7 +24,8 @@ class AllProjects(CategoriesMixin, ProjectsDataMixin, ListView):
 
     def get_queryset(self):
         if self.request.user.is_authenticated:
-            queryset = Project.objects.filter(author=self.request.user).order_by('-created_at')
+            queryset = Project.objects.filter(
+                author=self.request.user).order_by('-created_at')
         else:
             queryset = []
         return queryset
@@ -58,7 +59,8 @@ class ProjectsByTechnology(CategoriesMixin, ProjectsDataMixin, ListView):
                                                 category=category)
 
         context.update(initial_context)
-        context['description'] = initial_context.get('technologies').filter(name=self.kwargs.get('name'))[0].description
+        context['description'] = initial_context.get('technologies').filter(
+            name=self.kwargs.get('name'))[0].description
         return context
 
     def get_queryset(self):
@@ -78,7 +80,8 @@ class ProjectsByFeature(CategoriesMixin, ProjectsDataMixin, ListView):
         initial_context = self.get_user_context(title='Главная страница',
                                                 category=category)
         context.update(initial_context)
-        context['description'] = initial_context.get('features').filter(name=self.kwargs.get('name'))[0].description
+        context['description'] = initial_context.get('features').filter(
+            name=self.kwargs.get('name'))[0].description
         return context
 
     def get_queryset(self):
@@ -265,7 +268,7 @@ class LinkDelete(LoginRequiredMixin, DeleteView):
     def get_success_url(self, *args, **kwargs):
         obj = Link.objects.get(pk=self.get_object().id)
         return reverse_lazy('successful_delete',
-                            kwargs={'obj': f'Проект {obj.name}'})
+                            kwargs={'obj': f'Ссылка {obj.name}'})
 
 
 # Представления для вывода страницы с меню добавления различных объектов (Проект,
